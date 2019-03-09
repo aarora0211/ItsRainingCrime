@@ -20,5 +20,5 @@ get_recent_crimes <- function(num) {
   recent = tail(crime_data_with_weather, n = num)
   return(recent)
 }
-
+View(crime_data_with_weather)
 
