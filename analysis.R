@@ -15,6 +15,9 @@ crime_data_with_weather <- crime_data %>%
          neighborhood = Neighborhood) %>% 
   select(date, subcategory, neighborhood, rain, PRCP, TMAX, TMIN)
 
+# bens table didn't load
+write.csv(crime_data_with_weather, "trimmed_data.csv", row.names = F)
+
 # returns most recent crimes with n being the number of crimes
 get_recent_crimes <- function(num) {
   recent = tail(crime_data_with_weather, n = num)
