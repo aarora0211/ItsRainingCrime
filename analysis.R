@@ -15,9 +15,6 @@ crime_data_with_weather <- crime_data %>%
          neighborhood = Neighborhood) %>% 
   select(date, subcategory, neighborhood, rain, PRCP, TMAX, TMIN)
 
-# bens table didn't load
-write.csv(crime_data_with_weather, "trimmed_data.csv", row.names = F)
-
 # returns most recent crimes with n being the number of crimes
 get_recent_crimes <- function(num) {
   recent = tail(crime_data_with_weather, n = num)
@@ -58,15 +55,19 @@ neighborhood_no_rain_count <- neighborhood_crime_no_rain %>% count(neighborhood)
 names(neighborhood_no_rain_count)[2] <- "Not_Raining"
 joined_data <- neighborhood_rain_count %>% 
 inner_join(neighborhood_no_rain_count, by = "neighborhood") %>% 
-mutate(percentage = 100*(Not_Raining-Raining)/Not_Raining) %>% 
+mutate(percentage = 100*(Not_Raining-Raining)/Raining) %>% 
 filter(percentage == max(percentage))
 View(joined_data)
 
 # ###### This will help understand what characteristics of a neighborhood leads to more crime
 # 4. What crime is commited the most when the temperature is below 32 degrees? Above 75? Is it the same crime, did the temperature effect the most common crime?
+most_crime <- crime_data_with_weather %>% 
+            select(subcategory, TMIN, TMAX)
+min_temp_data <- most_crime %>% filter(TMIN < 32) %>% select(subcategory) %>% count(subcategory) %>% filter(n == max(n))
+max_temp_data <- most_crime %>% filter(TMAX > 75) %>% select(subcategory) %>% count(subcategory) %>% filter(n == max(n))
+View(min_temp_data)
+View(max_temp_data)
 
-
-  
 #   ###### This can help law enforcement determine what they should devote resources to when it is warm or cold.
 #   5. what season has the most crime? is it consistent from year to year?
 #   Done!!!!
@@ -74,7 +75,18 @@ View(joined_data)
 
 #   ###### This can help law enforcement predict trends in crime based on the weather and historical data
 #   6. What crime rate has the largest increase when it rains in the University district.
- 
+u_crime <- crime_data_with_weather %>% select(neighborhood,rain,subcategory) %>% filter(neighborhood == "UNIVERSITY")
+u_crime_rain <- u_crime %>% filter(rain == TRUE) %>% select(subcategory)
+u_crime_no_rain <- u_crime %>% filter(rain == FALSE) %>% select(subcategory)
+u_rain_count <- u_crime_rain %>% count(subcategory)
+names(u_rain_count)[2] <- "Raining"
+u_no_rain_count <- u_crime_no_rain %>% count(subcategory)
+names(u_no_rain_count)[2] <- "Not_Raining"
+u_joined_data <- u_rain_count %>% 
+  inner_join(u_no_rain_count, by = "subcategory") %>% 
+  mutate(percentage = 100*(Raining-Not_Raining)/Not_Raining) %>% 
+  filter(percentage == max(percentage))
+View(u_joined_data)
 
 # ###### This can help predict crime trends in the UDistrict based on the weather 
 # 7. What is the most common crime for Seattle the most common crime in every neighboorhood?
