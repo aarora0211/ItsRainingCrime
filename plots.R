@@ -1,20 +1,21 @@
 library(dplyr)
 library(ggplot2)
+source("analysis.r")
 
-my_data <- read.csv("trimmed_data.csv", stringsAsFactors = FALSE)
-View(my_data)
+crime_rain_data <- read.csv("trimmed_data.csv", stringsAsFactors = FALSE)
+#View(my_data)
 
 
-make_plot_data <- my_data %>%
+rainy_crimes <- crime_rain_data %>%
   filter(rain == TRUE) %>%
   count(subcategory)%>%
   arrange(desc(n))%>%
   top_n(10, n)
 
 
-View(make_plot_data)
+#View(rainy_crimes)
 
-plot1 <- ggplot(data = make_plot_data) +
+plot1 <- ggplot(data = rainy_crimes) +
   geom_col(
     mapping = aes(x = reorder(subcategory, n), y = n, fill = subcategory)) +
   scale_color_brewer(palette = "Spectral") +
@@ -26,3 +27,11 @@ plot1 <- ggplot(data = make_plot_data) +
     y =  "number of occurences while raining"
   )
 plot1
+
+
+crime_data_with_weather <- crime_data_with_weather %>% 
+  
+# Map
+ggplot(data = crime_data_with_weather) +
+  geom_line(mapping = aes(x = ))
+
