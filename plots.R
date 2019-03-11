@@ -12,9 +12,6 @@ rainy_crimes <- crime_rain_data %>%
   arrange(desc(n))%>%
   top_n(10, n)
 
-
-#View(rainy_crimes)
-
 plot1 <- ggplot(data = rainy_crimes) +
   geom_col(
     mapping = aes(x = reorder(subcategory, n), y = n, fill = subcategory)) +
@@ -28,10 +25,48 @@ plot1 <- ggplot(data = rainy_crimes) +
   )
 plot1
 
-
-crime_data_with_weather <- crime_data_with_weather %>% 
+second_plot_data <- my_data %>%
+  filter(rain == TRUE) %>%
+  select(subcategory, PRCP, neighborhood)
+ 
   
-# Map
-ggplot(data = crime_data_with_weather) +
-  geom_line(mapping = aes(x = ))
+
+View(second_plot_data)
+
+plot_two <- ggplot(data = second_plot_data) +
+  geom_point(
+    mapping = aes(x = PRCP, y = subcategory)) +
+      labs(
+        title = "Precipitation level and spacific crime",
+        x = "type of crime",
+        y =  "precipitation level"
+  )
+
+  plot_two
+
+
+third_plot_data <- my_data %>%
+  filter(rain == TRUE) %>%
+  select(subcategory, PRCP, neighborhood) %>%
+  filter(neighborhood == "CAPITOL HILL") %>%
+count(subcategory, PRCP, neighborhood)
+
+View(third_plot_data)
+
+
+plot_3 <- ggplot(data = third_plot_data) + 
+  geom_hex(mapping = aes(x = n, y = PRCP))+
+  labs(
+    title = "Precipitation level and crime",
+    x = "number of occurences",
+    y =  "precipitation level"
+  )
+plot_3
+
+
+#Table for Seasonal Plot
+my_data$MonthN <- as.numeric(format(as.Date(my_data$date),"%m")) # Month's number
+my_data$YearN <- as.numeric(format(as.Date(my_data$date),"%Y"))
+my_data$Month  <- months(as.Date(my_data$date), abbreviate=TRUE) # Month's abbr.
+View(my_data)
 
