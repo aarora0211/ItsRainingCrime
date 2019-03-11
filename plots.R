@@ -68,3 +68,9 @@ plot_3 <- ggplot(data = third_plot_data) +
 plot_3
 
 
+#Table for Seasonal Plot
+my_data$MonthN <- as.numeric(format(as.Date(my_data$date),"%m")) # Month's number
+my_data$YearN <- as.numeric(format(as.Date(my_data$date),"%Y"))
+my_data$Month  <- months(as.Date(my_data$date), abbreviate=TRUE) # Month's abbr.
+View(my_data)
+
