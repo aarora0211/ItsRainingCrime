@@ -7,7 +7,7 @@ team_server <- function(input, output) {
   
   
   output$plot1 <- renderPlot({
-    
+# Plot 1
     make_plot_data <- my_data %>%
       filter(rain == input$toggle_rain) %>%
       filter(neighborhood == input$neighborhood) %>% 
@@ -30,7 +30,7 @@ team_server <- function(input, output) {
   })
   
   output$plot2 <- renderPlot({
-    
+# Plot 2    
     second_plot_data <- my_data %>%
       filter(rain == TRUE) %>%
       filter(neighborhood == input$neighborhood) %>% 
@@ -49,7 +49,7 @@ team_server <- function(input, output) {
   })
   
   output$plot3 <- renderPlot({
-    
+# plot 3   
     third_plot_data <- my_data %>%
       filter(rain == input$toggle_rain) %>%
       filter(neighborhood == input$neighborhood) %>%
@@ -67,7 +67,7 @@ team_server <- function(input, output) {
   })
   
   output$plot4 <- renderPlot({
-    
+# plot 4
     plot_4_data <- my_data %>%
       filter(rain == input$toggle_rain) %>%
       select(subcategory, PRCP, neighborhood, TMAX) %>%
@@ -82,6 +82,41 @@ team_server <- function(input, output) {
         y =  "Daily High Temperature"
       )
     plot_4
+    
+  })
+# Description of the first plot
+  output$text1 <- renderText({
+    text1 <- paste0("Plot 1 shows the top 10 crimes that are commited while raining. The current neighborhood is ",
+                    tolower(input$neighborhood), ".")
+    text1
+    
+  })
+# Description of the second plot
+  output$text2 <- renderText({
+    text2 <- paste0("Plot 2 shows the amount of crime with and without rain for each specific crime. This 
+                      can also be filtered by neighboorhood. The current neighborhood is ",
+                    tolower(input$neighborhood), ".")
+    text2
+    
+  })
+# Description of the third plot
+  output$text3 <- renderText({
+    text3 <- paste0("Plot 3 shows the relationship between the level of rain and the number of crimes
+                      commited. The y axis shows percipitation levels and the x axis shows the number of
+                     crimes at that percipitation level. The data can be filtered by neighboorhood to 
+                     see if there is a diffence by neighboorhood. The current neighborhood is ",
+                    tolower(input$neighborhood), ".")
+    text3
+    
+  })
+# Description of the fourth plot
+  output$text4 <- renderText({
+    text4 <- paste0("Plot 4 shows the relationship between temperature and the number of crimes. We want
+                       to see if temperature has an effect on crime with and without rain. The plot shows 
+                       temperature on the y axis and the number of occurences on the x axis. The current
+                       neighborhood is ",
+                    tolower(input$neighborhood), ".")
+    text4
     
   })
 }

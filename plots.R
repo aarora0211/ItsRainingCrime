@@ -1,17 +1,16 @@
 library(dplyr)
 library(ggplot2)
-<<<<<<< HEAD
 library("hexbin")
 source("analysis.r")
-=======
 
 # install.packages("hexbin")
 library("hexbin")
->>>>>>> 8b2dc0b593c7e68b494902595a520738b751851b
 
+# loads joined data
 crime_rain_data <- read.csv("trimmed_data.csv", stringsAsFactors = FALSE)
-#View(my_data)
 
+
+# data and plot #1
 
 rainy_crimes <- crime_rain_data %>%
   filter(rain == TRUE) %>%
@@ -33,6 +32,9 @@ plot1 <- ggplot(data = rainy_crimes) +
   )
 plot1
 
+
+# data and plot #2
+
 second_plot_data <- crime_rain_data %>%
   filter(rain == TRUE) %>%
   select(subcategory, PRCP, neighborhood)
@@ -52,7 +54,8 @@ plot_two <- ggplot(data = second_plot_data) +
 
   plot_two
 
-
+# data and plot #3
+  
 third_plot_data <- crime_rain_data %>%
   filter(rain == TRUE) %>%
   select(subcategory, PRCP, neighborhood) %>%
@@ -71,6 +74,7 @@ plot_3 <- ggplot(data = third_plot_data) +
   )
 plot_3
 
+# data and plot #4
 
 
 plot_4_data <- crime_rain_data %>%
@@ -105,21 +109,22 @@ View(my_data)
 # Descriptions
 
 plot1
-# Plot 1 shows the top 10 crimes that are commited while raining. 
+# Plot 1 shows the top 10 crimes that are commited while raining. The current neighborhood is
 
 
 plot_two
 # Plot 2 shows the amount of crime with and without rain for each specific crime. This 
-# can also be filtered by neighboorhood.
+# can also be filtered by neighboorhood. The current neighborhood is
 
 
 plot_3
 # Plot 3 shows the relationship between the level of rain and the number of crimes
 # commited. The y axis shows percipitation levels and the x axis shows the number of
 # crimes at that percipitation level. The data can be filtered by neighboorhood to 
-# see if there is a diffence by neighboorhood
+# see if there is a diffence by neighboorhood. The current neighborhood is
 
 plot_4
 # Plot 4 shows the relationship between temperature and the number of crimes. We want
 # to see if temperature has an effect on crime with and without rain. The plot shows 
-# temperature on the y axis and the number of occurences on the x axis.
+# temperature on the y axis and the number of occurences on the x axis. The current
+# neighborhood is 
