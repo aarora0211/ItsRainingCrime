@@ -25,7 +25,7 @@ plot1 <- ggplot(data = rainy_crimes) +
   )
 plot1
 
-second_plot_data <- my_data %>%
+second_plot_data <- crime_rain_data %>%
   filter(rain == TRUE) %>%
   select(subcategory, PRCP, neighborhood)
  
@@ -45,7 +45,7 @@ plot_two <- ggplot(data = second_plot_data) +
   plot_two
 
 
-third_plot_data <- my_data %>%
+third_plot_data <- crime_rain_data %>%
   filter(rain == TRUE) %>%
   select(subcategory, PRCP, neighborhood) %>%
   filter(neighborhood == "CAPITOL HILL") %>%
@@ -64,8 +64,8 @@ plot_3 <- ggplot(data = third_plot_data) +
 plot_3
 
 
-<<<<<<< HEAD
-plot_4_data <- my_data %>%
+
+plot_4_data <- crime_rain_data %>%
   filter(rain == TRUE) %>%
   select(subcategory, PRCP, neighborhood, TMAX) %>%
   filter(neighborhood == "CAPITOL HILL") %>%
@@ -85,11 +85,11 @@ plot_4 <- ggplot(data = plot_4_data) +
 plot_4
 
 
-=======
+
 #Table for Seasonal Plot
 my_data$MonthN <- as.numeric(format(as.Date(my_data$date),"%m")) # Month's number
 my_data$YearN <- as.numeric(format(as.Date(my_data$date),"%Y"))
 my_data$Month  <- months(as.Date(my_data$date), abbreviate=TRUE) # Month's abbr.
 View(my_data)
->>>>>>> dd77041a710010f51245bbc79adf96416d941f5a
+
 
