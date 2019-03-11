@@ -12,6 +12,7 @@ make_plot_data <- my_data %>%
   top_n(10, n)
 
 
+
 View(make_plot_data)
 
 plot1 <- ggplot(data = make_plot_data) +
@@ -26,3 +27,17 @@ plot1 <- ggplot(data = make_plot_data) +
     y =  "number of occurences while raining"
   )
 plot1
+
+
+second_plot_data <- my_data %>%
+  filter(rain == TRUE) %>%
+  select(subcategory, PRCP)
+  
+
+View(second_plot_data)
+
+plot_two <- ggplot(data = second_plot_data) +
+  geom_point(
+    mapping = aes(x = PRCP, y = subcategory)
+  )
+plot_two
