@@ -1,7 +1,7 @@
 library(shiny)
 data <- read.csv("trimmed_data.csv", stringsAsFactors = F)
 neighborhoods <- unique(data$neighborhood)
-team_ui <- fluidPage(
+team_ui <- fluidPage(theme = "bootstrap.css",
   
   titlePanel("Its Raining Crime"),
   
