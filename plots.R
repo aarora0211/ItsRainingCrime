@@ -7,6 +7,7 @@ View(my_data)
 
 make_plot_data <- my_data %>%
   filter(rain == TRUE) %>%
+  filter(neighborhood == "UNIVERSITY") %>% 
   count(subcategory)%>%
   arrange(desc(n))%>%
   top_n(10, n)
