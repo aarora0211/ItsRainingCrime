@@ -16,7 +16,8 @@ team_ui <- fluidPage(
      tabsetPanel(type = "tabs",
                   tabPanel("Fequency of Crime", plotOutput("plot1")),
                   tabPanel("Precipitation and Specific Crime", plotOutput("plot2")),
-                  tabPanel("Precipitation and Overall Crime ", plotOutput("plot3"))
+                  tabPanel("Precipitation and Overall Crime ", plotOutput("plot3")),
+                  tabPanel("Temperature and Crime", plotOutput("plot4"))
                 )
     )
   )

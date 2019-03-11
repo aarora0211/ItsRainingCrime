@@ -65,4 +65,23 @@ team_server <- function(input, output) {
       )
     plot_3
   })
+  
+  output$plot4 <- renderPlot({
+    
+    plot_4_data <- my_data %>%
+      filter(rain == input$toggle_rain) %>%
+      select(subcategory, PRCP, neighborhood, TMAX) %>%
+      filter(neighborhood == input$neighborhood) %>%
+      count(subcategory, neighborhood, TMAX)
+    
+    plot_4 <- ggplot(data = plot_4_data) + 
+      geom_hex(mapping = aes(x = n, y = TMAX))+
+      labs(
+        title = "Cold Weather and Crime",
+        x = "number of occurences",
+        y =  "Daily High Temperature"
+      )
+    plot_4
+    
+  })
 }
