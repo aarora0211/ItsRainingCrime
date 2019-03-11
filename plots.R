@@ -1,7 +1,13 @@
 library(dplyr)
 library(ggplot2)
+<<<<<<< HEAD
 library("hexbin")
 source("analysis.r")
+=======
+
+# install.packages("hexbin")
+library("hexbin")
+>>>>>>> 8b2dc0b593c7e68b494902595a520738b751851b
 
 crime_rain_data <- read.csv("trimmed_data.csv", stringsAsFactors = FALSE)
 #View(my_data)
@@ -9,6 +15,7 @@ crime_rain_data <- read.csv("trimmed_data.csv", stringsAsFactors = FALSE)
 
 rainy_crimes <- crime_rain_data %>%
   filter(rain == TRUE) %>%
+  filter(neighborhood == "UNIVERSITY") %>% 
   count(subcategory)%>%
   arrange(desc(n))%>%
   top_n(10, n)
