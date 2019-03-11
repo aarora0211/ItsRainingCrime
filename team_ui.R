@@ -2,8 +2,9 @@ library(shiny)
 data <- read.csv("trimmed_data.csv", stringsAsFactors = F)
 neighborhoods <- unique(data$neighborhood)
 team_ui <- fluidPage(theme = "bootstrap.css",
+            titlePanel(h1("Its Raining Crime")),  #title of the app
+      
   
-  titlePanel("Its Raining Crime"),
   
   sidebarLayout(
     sidebarPanel(
@@ -22,3 +23,4 @@ team_ui <- fluidPage(theme = "bootstrap.css",
     )
   )
 )
+
