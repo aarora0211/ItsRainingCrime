@@ -68,3 +68,24 @@ plot_3 <- ggplot(data = third_plot_data) +
 plot_3
 
 
+plot_4_data <- my_data %>%
+  filter(rain == TRUE) %>%
+  select(subcategory, PRCP, neighborhood, TMAX) %>%
+  filter(neighborhood == "CAPITOL HILL") %>%
+  count(subcategory, neighborhood, TMAX)
+
+
+View(plot_4_data)
+
+plot_4 <- ggplot(data = plot_4_data) + 
+  geom_hex(mapping = aes(x = n, y = TMAX))+
+  labs(
+    title = "Cold Weather and Crime",
+    x = "number of occurences",
+    y =  "Daily High Temperature"
+  )
+
+plot_4
+
+
+
