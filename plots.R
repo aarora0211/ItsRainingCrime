@@ -1,5 +1,7 @@
 library(dplyr)
 library(ggplot2)
+# install.packages("hexbin")
+library("hexbin")
 
 my_data <- read.csv("trimmed_data.csv", stringsAsFactors = FALSE)
 View(my_data)
