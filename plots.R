@@ -1,5 +1,6 @@
 library(dplyr)
 library(ggplot2)
+library("hexbin")
 source("analysis.r")
 
 crime_rain_data <- read.csv("trimmed_data.csv", stringsAsFactors = FALSE)
@@ -93,3 +94,25 @@ my_data$Month  <- months(as.Date(my_data$date), abbreviate=TRUE) # Month's abbr.
 View(my_data)
 
 
+
+# Descriptions
+
+plot1
+# Plot 1 shows the top 10 crimes that are commited while raining. 
+
+
+plot_two
+# Plot 2 shows the amount of crime with and without rain for each specific crime. This 
+# can also be filtered by neighboorhood.
+
+
+plot_3
+# Plot 3 shows the relationship between the level of rain and the number of crimes
+# commited. The y axis shows percipitation levels and the x axis shows the number of
+# crimes at that percipitation level. The data can be filtered by neighboorhood to 
+# see if there is a diffence by neighboorhood
+
+plot_4
+# Plot 4 shows the relationship between temperature and the number of crimes. We want
+# to see if temperature has an effect on crime with and without rain. The plot shows 
+# temperature on the y axis and the number of occurences on the x axis.
