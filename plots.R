@@ -1,24 +1,21 @@
 library(dplyr)
 library(ggplot2)
+
 # install.packages("hexbin")
 library("hexbin")
 
-my_data <- read.csv("trimmed_data.csv", stringsAsFactors = FALSE)
-View(my_data)
+crime_rain_data <- read.csv("trimmed_data.csv", stringsAsFactors = FALSE)
+#View(my_data)
 
 
-make_plot_data <- my_data %>%
+rainy_crimes <- crime_rain_data %>%
   filter(rain == TRUE) %>%
   filter(neighborhood == "UNIVERSITY") %>% 
   count(subcategory)%>%
   arrange(desc(n))%>%
   top_n(10, n)
 
-
-
-View(make_plot_data)
-
-plot1 <- ggplot(data = make_plot_data) +
+plot1 <- ggplot(data = rainy_crimes) +
   geom_col(
     mapping = aes(x = reorder(subcategory, n), y = n, fill = subcategory)) +
   scale_color_brewer(palette = "Spectral") +
@@ -31,8 +28,7 @@ plot1 <- ggplot(data = make_plot_data) +
   )
 plot1
 
-
-second_plot_data <- my_data %>%
+second_plot_data <- crime_rain_data %>%
   filter(rain == TRUE) %>%
   select(subcategory, PRCP, neighborhood)
  
@@ -52,7 +48,7 @@ plot_two <- ggplot(data = second_plot_data) +
   plot_two
 
 
-third_plot_data <- my_data %>%
+third_plot_data <- crime_rain_data %>%
   filter(rain == TRUE) %>%
   select(subcategory, PRCP, neighborhood) %>%
   filter(neighborhood == "CAPITOL HILL") %>%
@@ -69,5 +65,34 @@ plot_3 <- ggplot(data = third_plot_data) +
     y =  "precipitation level"
   )
 plot_3
+
+
+
+plot_4_data <- crime_rain_data %>%
+  filter(rain == TRUE) %>%
+  select(subcategory, PRCP, neighborhood, TMAX) %>%
+  filter(neighborhood == "CAPITOL HILL") %>%
+  count(subcategory, neighborhood, TMAX)
+
+
+View(plot_4_data)
+
+plot_4 <- ggplot(data = plot_4_data) + 
+  geom_hex(mapping = aes(x = n, y = TMAX))+
+  labs(
+    title = "Cold Weather and Crime",
+    x = "number of occurences",
+    y =  "Daily High Temperature"
+  )
+
+plot_4
+
+
+
+#Table for Seasonal Plot
+my_data$MonthN <- as.numeric(format(as.Date(my_data$date),"%m")) # Month's number
+my_data$YearN <- as.numeric(format(as.Date(my_data$date),"%Y"))
+my_data$Month  <- months(as.Date(my_data$date), abbreviate=TRUE) # Month's abbr.
+View(my_data)
 
 
