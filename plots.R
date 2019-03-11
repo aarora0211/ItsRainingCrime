@@ -31,7 +31,8 @@ plot1
 
 second_plot_data <- my_data %>%
   filter(rain == TRUE) %>%
-  select(subcategory, PRCP)
+  select(subcategory, PRCP, neighborhood)
+ 
   
 
 View(second_plot_data)
@@ -41,3 +42,19 @@ plot_two <- ggplot(data = second_plot_data) +
     mapping = aes(x = PRCP, y = subcategory)
   )
 plot_two
+
+
+third_plot_data <- my_data %>%
+  filter(rain == TRUE) %>%
+  select(subcategory, PRCP, neighborhood) %>%
+count(subcategory, PRCP)
+
+View(third_plot_data)
+
+
+
+
+plot_3 <- ggplot()
+
+
+
