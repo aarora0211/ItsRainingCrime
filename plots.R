@@ -39,22 +39,32 @@ View(second_plot_data)
 
 plot_two <- ggplot(data = second_plot_data) +
   geom_point(
-    mapping = aes(x = PRCP, y = subcategory)
+    mapping = aes(x = PRCP, y = subcategory)) +
+      labs(
+        title = "Precipitation level and spacific crime",
+        x = "type of crime",
+        y =  "precipitation level"
   )
-plot_two
+
+  plot_two
 
 
 third_plot_data <- my_data %>%
   filter(rain == TRUE) %>%
   select(subcategory, PRCP, neighborhood) %>%
-count(subcategory, PRCP)
+  filter(neighborhood == "CAPITOL HILL") %>%
+count(subcategory, PRCP, neighborhood)
 
 View(third_plot_data)
 
 
-
-
-plot_3 <- ggplot()
-
+plot_3 <- ggplot(data = third_plot_data) + 
+  geom_hex(mapping = aes(x = n, y = PRCP))+
+  labs(
+    title = "Precipitation level and crime",
+    x = "number of occurences",
+    y =  "precipitation level"
+  )
+plot_3
 
 
