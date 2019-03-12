@@ -1,20 +1,8 @@
 library(dplyr)
 library(ggplot2)
-<<<<<<< HEAD
-library(scales)
-=======
 library("hexbin")
->>>>>>> 6f2b80d5b063b6b92385a385eaffc427682147b0
 source("analysis.r")
-
-<<<<<<< HEAD
-
-
-
-=======
 # install.packages("hexbin")
-library("hexbin")
->>>>>>> 00653860e1ea6127280fd321ca6157452efb4082
 
 # loads joined data
 crime_rain_data <- read.csv("trimmed_data.csv", stringsAsFactors = FALSE)
@@ -121,11 +109,6 @@ mean_crimes <- crime_numbers %>%
 crime_numbers <- crime_numbers %>% 
   inner_join(mean_crimes, by = "subcategory")
 
-View(crime_numbers)
-
-
-<<<<<<< HEAD
-
 plot_5 <- ggplot(data = crime_numbers, mapping = aes(x = MonthN, y = n, color = subcategory, size = "3")) +
   geom_line() + 
   geom_point() + 
@@ -137,50 +120,32 @@ plot_5 <- ggplot(data = crime_numbers, mapping = aes(x = MonthN, y = n, color = 
   
 plot_5
   
-=======
 # Descriptions
 
 plot1
-<<<<<<< HEAD
 # Plot 1 shows the top 10 crimes that are commited while raining. 
 # Question: what are the top 10 crimes commited while its raining per neighborhood
-=======
-# Plot 1 shows the top 10 crimes that are commited while raining. The current neighborhood is
->>>>>>> 00653860e1ea6127280fd321ca6157452efb4082
 
 
 plot_two
 # Plot 2 shows the amount of crime with and without rain for each specific crime. This 
-<<<<<<< HEAD
 # can also be filtered by neighboorhood.
+
 # Question: How does the level of rain effect when specific crimes will occur in every 
 #neighborhood 
-=======
-# can also be filtered by neighboorhood. The current neighborhood is
->>>>>>> 00653860e1ea6127280fd321ca6157452efb4082
-
 
 plot_3
 # Plot 3 shows the relationship between the level of rain and the number of crimes
 # commited. The y axis shows percipitation levels and the x axis shows the number of
 # crimes at that percipitation level. The data can be filtered by neighboorhood to 
-<<<<<<< HEAD
 # see if there is a diffence by neighboorhood
+
 # question: How does the level of rain effect the total number of crimes per 
 #neighboorhood
 plot_4
 # Plot 4 shows the relationship between temperature and the number of crimes. We want
 # to see if temperature has an effect on crime with and without rain. The plot shows 
 # temperature on the y axis and the number of occurences on the x axis.
+
 # question: How does the temperature effect the total number of crimes per 
 # neighboorhood
-=======
-# see if there is a diffence by neighboorhood. The current neighborhood is
-
-plot_4
-# Plot 4 shows the relationship between temperature and the number of crimes. We want
-# to see if temperature has an effect on crime with and without rain. The plot shows 
-# temperature on the y axis and the number of occurences on the x axis. The current
-# neighborhood is 
->>>>>>> 00653860e1ea6127280fd321ca6157452efb4082
->>>>>>> 6f2b80d5b063b6b92385a385eaffc427682147b0
