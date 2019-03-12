@@ -1,4 +1,9 @@
-source("my_ui.R")
-source("my_server.R")
+
 library(shiny)
-shinyApp(ui = my_ui, server = my_server)
+source("team_ui.R")
+source("team_server.R")
+shinyApp(ui = team_ui, server = team_server)
+
+
+
+
