@@ -148,4 +148,15 @@ team_server <- function(input, output) {
     text4
     
   })
+  output$text5 <- renderText({
+    text5 <- paste0("This visualization shows the rate of top 9 crimes in over the span of the year. On the x axis,
+                    the months are labeled, and on the y axis, the count is plotted. This plot can help identify trends
+                    in crime with the seasons. With this information, law enforcement can determine trends in crime and 
+                    the time of the year. The current neighborhood being visualized is ", 
+                    tolower(input$neighborhood), ".")
+    text5
+    
+  })
+  
+  
 }
