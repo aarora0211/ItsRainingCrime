@@ -5,6 +5,44 @@ library("ggplot2")
 library("hexbin")
 my_data <- read.csv("trimmed_data.csv", stringsAsFactors = FALSE)
 team_server <- function(input, output) {
+  
+# Introduction to the program
+  
+  output$intro <- renderUI({
+    
+    title <- tags$h2("Introduction")
+  
+    p1 <- tags$p("This analysis uses data from the National Atmospheric and Oceanic Association
+                    (NOAA) that gives information on the amount of precipitation and the temperature, and data from the Seattle 
+                    government that gives statistics about crime. The data from NOAA tells us the temperature max, temperature min,
+                    whether its raining, and the amount of precipitation. The data from the Seattle government tells us the date, type
+                    of crime, and neighborhood. The data about the different types of crime often use local penal codes to describe the
+                    specific crime. For example,Car prowl means the theft of something from a car.
+                                                                                               ") 
+     divider <- tags$hr()  
+     
+     tab <- tags$br()
+                    
+     p2 <- tags$p("This data can help to understand trends in crime with a set given of conditions. Law enforcement can use this 
+                    information to better prepare and predict crime with respect to the weather.
+                    Additionally, we can find trends in crime based on location, type, seasonal time,
+                    and time of day.")
+     
+     link1 <- tags$a(href="https://www.kaggle.com/rtatman/did-it-rain-in-seattle-19482017", "Crime Data Set")
+     
+     link2 <- tags$a(href="https://catalog.data.gov/dataset/crime-data-76bd0", "Weather Data Set")
+     
+     names_intro <- tags$h4("Authors")
+     
+      names <- tags$ul(
+                 tags$li("Shivank Mistry"), 
+                 tags$li("Akshit Arora"), 
+                 tags$li("Benjamin Byrne Morse"),
+                 tags$li("Sean Cleary")
+               )
+     
+      HTML(paste(title, divider, p1, tab, tab, p2, divider, link1, tab, link2, divider, names_intro, names))
+  })
 
   output$plot1 <- renderPlot({
 # Plot 1

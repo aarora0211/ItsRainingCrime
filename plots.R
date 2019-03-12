@@ -4,6 +4,10 @@ library("hexbin")
 source("analysis.r")
 # install.packages("hexbin")
 
+
+# This file has the plots using the trimmed data. The plots are then inplemented in
+# the team_server.R file.
+
 # loads joined data
 crime_rain_data <- read.csv("trimmed_data.csv", stringsAsFactors = FALSE)
 
