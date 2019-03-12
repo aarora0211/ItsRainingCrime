@@ -1,6 +1,7 @@
 library("shiny")
 library("dplyr")
 library("tidyr")
+library("ggplot2")
 library("hexbin")
 my_data <- read.csv("trimmed_data.csv", stringsAsFactors = FALSE)
 team_server <- function(input, output) {
