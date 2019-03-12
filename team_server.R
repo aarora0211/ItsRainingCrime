@@ -83,6 +83,34 @@ team_server <- function(input, output) {
     plot_4
     
   })
+  
+  output$plot5 <- renderPlot({
+# plot 5
+    my_data$MonthN <- as.numeric(format(as.Date(my_data$date),"%m")) # Month's number
+    
+    crime_numbers <- my_data %>% 
+      filter((rain == input$toggle_rain)&neighborhood == input$neighborhood) %>% 
+      count(MonthN, subcategory)
+    
+    mean_crimes <- crime_numbers %>% 
+      group_by(subcategory) %>% 
+      summarize(m = mean(n)) %>% 
+      top_n(9, m)
+    
+    crime_numbers <- crime_numbers %>% 
+      inner_join(mean_crimes, by = "subcategory")
+    plot_5 <- ggplot(data = crime_numbers, mapping = aes(x = MonthN, y = n, color = subcategory, size = "3")) +
+                geom_line() + 
+                geom_point() + 
+                guides(size = FALSE) +
+                scale_x_continuous(breaks = seq(1,12,1),
+                                   labels = c("Jan", "Feb", "Mar", "Apr", "May", "June",
+                                              "July", "Aug", "Sep", "Oct", "Nov", "Dec")) +
+                labs(title = paste0("Seasonal Crimes in ", input$neighborhood), x = "Month", y="Number of Crimes") +
+                scale_color_brewer(palette = "Set1")
+              
+    plot_5
+  })
 # Description of the first plot
   output$text1 <- renderText({
     text1 <- paste0("Plot 1 shows the top 10 crimes that are commited while raining. The current neighborhood is ",

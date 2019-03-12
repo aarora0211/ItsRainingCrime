@@ -1,7 +1,6 @@
 library(shiny)
 data <- read.csv("trimmed_data.csv", stringsAsFactors = F)
 neighborhoods <- unique(data$neighborhood)
-<<<<<<< HEAD
 team_ui <- fluidPage(theme = "bootstrap.css",
             titlePanel(h1("Its Raining Crime")),  #title of the app
             p("This analysis uses data from the National Atmospheric and Oceanic Association
@@ -30,7 +29,8 @@ team_ui <- fluidPage(theme = "bootstrap.css",
                   tabPanel("Fequency of Crime", plotOutput("plot1"), textOutput("text1")),
                   tabPanel("Precipitation and Specific Crime", plotOutput("plot2"), textOutput("text2")),
                   tabPanel("Precipitation and Overall Crime ", plotOutput("plot3"), textOutput("text3")),
-                  tabPanel("Temperature and Crime", plotOutput("plot4"), textOutput("text4"))
+                  tabPanel("Temperature and Crime", plotOutput("plot4"), textOutput("text4")),
+                  tabPanel("Crime and Time of Year", plotOutput("plot5"), textOutput("text5"))
                 )
     )
   )
