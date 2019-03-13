@@ -16,8 +16,8 @@ team_ui <- fluidPage(
       tabsetPanel(type = "tabs",
                   tabPanel("Introduction", htmlOutput("intro")),
                   tabPanel("Fequency of Crime", plotOutput("plot1"), textOutput("text1")),
-                  tabPanel("Precipitation and Specific Crime", plotOutput("plot2"), textOutput("text2")),
-                  tabPanel("Precipitation and Overall Crime ", plotOutput("plot3"), textOutput("text3")),
+                  tabPanel("Precipitation and Specific Crime", plotOutput("plot2"), tags$strong(textOutput("disclaimer")), textOutput("text2")),
+                  tabPanel("Precipitation and Overall Crime ", plotOutput("plot3"), tags$strong(textOutput("disclaimer2")), textOutput("text3")),
                   tabPanel("Temperature and Crime", plotOutput("plot4"), textOutput("text4")),
                   tabPanel("Crime and Time of Year", plotOutput("plot5"), textOutput("text5"))
                 )

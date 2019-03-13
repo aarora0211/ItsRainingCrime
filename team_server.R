@@ -28,9 +28,9 @@ team_server <- function(input, output) {
                     Additionally, we can find trends in crime based on location, type, seasonal time,
                     and time of day.")
      
-     link1 <- tags$a(href="https://www.kaggle.com/rtatman/did-it-rain-in-seattle-19482017", "Crime Data Set")
+     link1 <- tags$a(href="https://www.kaggle.com/rtatman/did-it-rain-in-seattle-19482017", "Weather Data Set")
      
-     link2 <- tags$a(href="https://catalog.data.gov/dataset/crime-data-76bd0", "Weather Data Set")
+     link2 <- tags$a(href="https://catalog.data.gov/dataset/crime-data-76bd0", "Crime Data Set")
      
      names_intro <- tags$h4("Authors")
      
@@ -78,7 +78,7 @@ team_server <- function(input, output) {
       geom_point(
         mapping = aes(x = PRCP, y = subcategory)) +
       labs(
-        title = "Precipitation level and spacific crime",
+        title = "Precipitation level and specific crime",
         x = "precipitation level",
         y =  "type of crime"
       )
@@ -89,7 +89,7 @@ team_server <- function(input, output) {
   output$plot3 <- renderPlot({
 # plot 3   
     third_plot_data <- my_data %>%
-      filter(rain == input$toggle_rain) %>%
+      #filter(rain == input$toggle_rain) %>%
       filter(neighborhood == input$neighborhood) %>%
       select(subcategory, PRCP, neighborhood) %>%
       count(subcategory, PRCP, neighborhood)
@@ -197,5 +197,16 @@ team_server <- function(input, output) {
     
   })
   
+  output$disclaimer <- renderText({
+    disclaimer <- "Notice: Rainfall toggle not applicable to this section"
+    disclaimer
+  })
+  
+  output$disclaimer2 <- renderText({
+    disclaimer <- "Notice: Rainfall toggle not applicable to this section"
+    disclaimer
+  })
+  
   
 }
+
