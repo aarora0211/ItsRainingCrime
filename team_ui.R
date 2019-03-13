@@ -3,7 +3,7 @@ data <- read.csv("trimmed_data.csv", stringsAsFactors = F)
 neighborhoods <- unique(data$neighborhood)
 team_ui <- fluidPage(
   
-            titlePanel(h1("Its Raining Crime")),  #title of the app
+            titlePanel("Its Raining Crime"),  #title of the app
            
   sidebarLayout(
     sidebarPanel(
