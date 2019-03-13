@@ -78,7 +78,7 @@ team_server <- function(input, output) {
       geom_point(
         mapping = aes(x = PRCP, y = subcategory)) +
       labs(
-        title = "Precipitation level and spacific crime",
+        title = "Precipitation level and specific crime",
         x = "precipitation level",
         y =  "type of crime"
       )
@@ -89,7 +89,7 @@ team_server <- function(input, output) {
   output$plot3 <- renderPlot({
 # plot 3   
     third_plot_data <- my_data %>%
-      filter(rain == input$toggle_rain) %>%
+      #filter(rain == input$toggle_rain) %>%
       filter(neighborhood == input$neighborhood) %>%
       select(subcategory, PRCP, neighborhood) %>%
       count(subcategory, PRCP, neighborhood)
@@ -195,6 +195,16 @@ team_server <- function(input, output) {
                     tolower(input$neighborhood), ".")
     text5
     
+  })
+  
+  output$disclaimer <- renderText({
+    disclaimer <- "Notice: Rainfall toggle not applicable to this section"
+    disclaimer
+  })
+  
+  output$disclaimer2 <- renderText({
+    disclaimer <- "Notice: Rainfall toggle not applicable to this section"
+    disclaimer
   })
   
   
