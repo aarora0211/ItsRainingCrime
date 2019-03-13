@@ -28,9 +28,9 @@ team_server <- function(input, output) {
                     Additionally, we can find trends in crime based on location, type, seasonal time,
                     and time of day.")
      
-     link1 <- tags$a(href="https://www.kaggle.com/rtatman/did-it-rain-in-seattle-19482017", "Crime Data Set")
+     link1 <- tags$a(href="https://www.kaggle.com/rtatman/did-it-rain-in-seattle-19482017", "Weather Data Set")
      
-     link2 <- tags$a(href="https://catalog.data.gov/dataset/crime-data-76bd0", "Weather Data Set")
+     link2 <- tags$a(href="https://catalog.data.gov/dataset/crime-data-76bd0", "Crime Data Set")
      
      names_intro <- tags$h4("Authors")
      
@@ -209,3 +209,4 @@ team_server <- function(input, output) {
   
   
 }
+
