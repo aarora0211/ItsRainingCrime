@@ -5,8 +5,8 @@ account: shivank-mistry
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 787506
-bundleId: 1937135
+bundleId: 1937145
 url: https://shivank-mistry.shinyapps.io/its_raining_crime/
-when: 1552499367.72456
+when: 1552499601.60825
 asMultiple: FALSE
 asStatic: FALSE
