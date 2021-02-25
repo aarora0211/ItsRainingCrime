@@ -4,6 +4,7 @@ This analysis uses data from the National Atmospheric and Oceanic Association (N
 
 This data can help to understand trends in crime with a set given of conditions. Law enforcement can use this information to better prepare and predict crime with respect to the weather. Additionally, we can find trends in crime based on location, type, seasonal time, and time of day.
 
+Link to the shiny app: https://shivank-mistry.shinyapps.io/its_raining_crime/
 
 # Authors
 * Akshit Arora
